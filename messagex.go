@@ -1,29 +1,25 @@
 package messagex
 
 import (
-	"fmt"
-	"os"
-
 	"vines.smsglobal.local/messagex/v2/sdk/go-messagex/internal/pkg/messagexapi"
 	"vines.smsglobal.local/messagex/v2/sdk/go-messagex/internal/types/api"
 	"vines.smsglobal.local/messagex/v2/sdk/go-messagex/internal/types/constants"
-	"vines.smsglobal.local/messagex/v2/sdk/go-messagex/pkg/env"
 	"vines.smsglobal.local/messagex/v2/sdk/go-messagex/pkg/logger"
 )
 
 type APIClient struct {
 	l *logger.Logger
-	e *env.Env
 
 	apiKey, apiSecret string
 
 	api *messagexapi.MessageXAPI
 }
 
-func CreateAPIClient(user, pass string) (*APIClient, error) {
+func CreateAPIClient(user, pass string) *APIClient {
 
 	// Create the logger
 	l := logger.CreateLogger(constants.DebugLevel)
+	lg := l.Lgr.With().Str("Mail Server", "Login").Logger()
 
 	mxApi := &APIClient{
 		l:         l,
@@ -34,20 +30,11 @@ func CreateAPIClient(user, pass string) (*APIClient, error) {
 	mxApi.apiKey = user
 	mxApi.apiSecret = pass
 
-	a, err := messagexapi.CreateMessageXAPI(l, constants.APIHost)
-	if err != nil {
-		fmt.Printf("Error checking env variables: %s", err.Error())
-		os.Exit(1)
-	}
+	mxApi.api = messagexapi.CreateMessageXAPI(l, constants.APIHost)
 
-	mxApi.api = a
+	lg.Info().Msgf("API Client created successfully")
 
-	err = mxApi.Login()
-	if err != nil {
-		return nil, fmt.Errorf("unable to log in to the MessageX api server: %s", err.Error())
-	}
-
-	return mxApi, nil
+	return mxApi
 }
 
 // Login handles a login command with username and password.

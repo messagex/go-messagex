@@ -1,0 +1,10 @@
+stages:
+  - test
+  - build-dev
+  - deploy-dev
+tester:
+  stage: test
+  script:
+    - /bin/bash gitlab-ci/test.sh
+  only:
+    - branches

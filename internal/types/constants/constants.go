@@ -1,6 +1,5 @@
 package constants
 
-// Config
 const (
 
 	//Config
@@ -16,5 +15,4 @@ const (
 
 	// Other
 	AttachmentType = "attachment"
-
 )
