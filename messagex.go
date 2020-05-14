@@ -1,20 +1,32 @@
+// Package MessageX provides the ADK to the MessageX API server
+//
+// Copyright 2020 SMSGlobal. All rights reserved.
+// Use of this source code is governed by a BSD-style
+// license that can be found in the LICENSE file.
 package messagex
 
 import (
-	"vines.smsglobal.local/messagex/v2/sdk/go-messagex/internal/pkg/messagexapi"
-	"vines.smsglobal.local/messagex/v2/sdk/go-messagex/internal/types/api"
-	"vines.smsglobal.local/messagex/v2/sdk/go-messagex/internal/types/constants"
-	"vines.smsglobal.local/messagex/v2/sdk/go-messagex/pkg/logger"
+	"github.com/messagex/go-messagex/internal/pkg/messagexapi"
+	"github.com/messagex/go-messagex/internal/types/api"
+	"github.com/messagex/go-messagex/internal/types/constants"
+	"github.com/messagex/go-messagex/pkg/logger"
 )
 
 type APIClient struct {
 	l *logger.Logger
-
 	apiKey, apiSecret string
-
 	api *messagexapi.MessageXAPI
 }
 
+// CreateAPIClient - Initializes the MessageX api client library and provides a handle that can later be used to login
+// to the MessageX API server and execute requests against it.
+//
+// Parameters:
+//
+//  user - the login username/api key
+//  pass - the password/api secret
+//
+// Returns an instance of the APIClient
 func CreateAPIClient(user, pass string) *APIClient {
 
 	// Create the logger
@@ -37,7 +49,9 @@ func CreateAPIClient(user, pass string) *APIClient {
 	return mxApi
 }
 
-// Login handles a login command with username and password.
+// Login - Logs the user in to the MessageX API server with the username and password provided in the call to CreateAPIClient.
+//
+// Returns an error if it occurs
 func (c *APIClient) Login() error {
 	lg := c.l.Lgr.With().Str("Mail Server", "Login").Logger()
 
@@ -51,6 +65,7 @@ func (c *APIClient) Login() error {
 	return nil
 }
 
+// CreateEmail - Creates an empty email object that is to be populated and sent to the MessageX API server
 func (c *APIClient) CreateEmail() *api.Email {
 	lg := c.l.Lgr.With().Str("Mail Server", "CreateEmail").Logger()
 
@@ -59,13 +74,19 @@ func (c *APIClient) CreateEmail() *api.Email {
 	return &api.Email{}
 }
 
-func (c *APIClient) SendEmail(mjr *api.Email) error {
+// SendEmail - Send the email to the MessageX API server
+//
+// Parameters:
+//	msg - An instance on the api.Email struct that represents the email message to be sent
+//
+// Returns an error if it occurs
+func (c *APIClient) SendEmail(msg *api.Email) error {
 	lg := c.l.Lgr.With().Str("MessageX", "SendEmail").Logger()
 
 	lg.Info().Msg("Sending email to MessageX")
-	lg.Debug().Msgf("%v", mjr)
+	lg.Debug().Msgf("%v", msg)
 
-	err := c.api.SendMail(mjr)
+	err := c.api.SendMail(msg)
 	if err != nil {
 		return err
 	}

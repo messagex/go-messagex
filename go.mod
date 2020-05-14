@@ -1,4 +1,4 @@
-module vines.smsglobal.local/messagex/v2/sdk/go-messagex
+module github.com/messagex/go-messagex
 
 go 1.13
 
@@ -14,4 +14,5 @@ require (
 	github.com/rs/zerolog v1.18.0
 	github.com/stretchr/testify v1.5.1
 	golang.org/x/net v0.0.0-20200506145744-7e3656a0809f // indirect
+	golang.org/x/tools v0.0.0-20200513022744-65e69ff2d148 // indirect
 )

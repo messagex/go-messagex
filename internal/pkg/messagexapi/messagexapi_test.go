@@ -5,10 +5,10 @@ import (
 
 	"github.com/stretchr/testify/assert"
 
-	"vines.smsglobal.local/messagex/v2/sdk/go-messagex/internal/types/constants"
-	"vines.smsglobal.local/messagex/v2/sdk/go-messagex/internal/util/mocks"
-	"vines.smsglobal.local/messagex/v2/sdk/go-messagex/internal/util/testdata"
-	"vines.smsglobal.local/messagex/v2/sdk/go-messagex/pkg/logger"
+	"github.com/messagex/go-messagex/internal/types/constants"
+	"github.com/messagex/go-messagex/internal/util/mocks"
+	"github.com/messagex/go-messagex/internal/util/testdata"
+	"github.com/messagex/go-messagex/pkg/logger"
 )
 
 var l *logger.Logger
