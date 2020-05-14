@@ -1,10 +1,8 @@
 package api
 
 import (
-	"testing"
-	"github.com/messagex/go-messagex/internal/types/constants"
-
 	"github.com/stretchr/testify/assert"
+	"testing"
 )
 
 func TestSetFrom(t *testing.T) {
@@ -99,6 +97,5 @@ func TestAddAttachment(t *testing.T) {
 			Filename: "filename.txt",
 			MimeType: "text/plain",
 			Contents: "test content",
-			AttachmentType: constants.AttachmentType,
 		}})
 }
