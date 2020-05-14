@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 
-	"vines.smsglobal.local/messagex/v2/sdk/go-messagex"
+	"github.com/messagex/go-messagex"
 )
 
 var apiKey = "qsP8QCUF9q4Lmmv6dKDJukOIZ9vA1BVIRiy91RGjKaU42ovWtdYb2gwYaqhYY788"
@@ -12,9 +12,11 @@ var apiSecret = "ezEONICwdyMyPkLdU553wXz5xk0OoV4y6HnngRcAimj1hoid7ZLl61k9pV1bMDo
 
 func main() {
 
-	apiClient, err := messagex.CreateAPIClient(apiKey, apiSecret)
+	apiClient := messagex.CreateAPIClient(apiKey, apiSecret)
+
+	err := apiClient.Login()
 	if err != nil {
-		fmt.Println("Error while creating the MessageX API client")
+		fmt.Printf("Error logging in to MessageX API: %s", err.Error())
 		os.Exit(0)
 	}
 
@@ -46,7 +48,6 @@ func main() {
 	email.SetHTMLBody(htmlBody)
 	email.SetPlainBody("Example plain email body")
 	email.AddAttachment("filename.jpg", "image/png", attPic)
-
 
 	err = apiClient.SendEmail(email)
 	if err != nil {

@@ -1,6 +1,6 @@
 package api
 
-import "vines.smsglobal.local/messagex/v2/sdk/go-messagex/internal/types/constants"
+import "github.com/messagex/go-messagex/internal/types/constants"
 
 // MailJob - this is the format in which the API layer passes the campaign mail job to the Core
 type Email struct {
@@ -38,7 +38,7 @@ type Contact struct {
 // Content - holds email body
 type Content struct {
 	Type    string `json:"type"`
-	Content string `json:"content"`
+	Body    string `json:"body"`
 }
 
 type MailSendResponse struct {
@@ -87,14 +87,14 @@ func (e *Email) SetSubject(subject string) {
 func (e *Email) SetHTMLBody(html string) {
 	e.Content = append(e.Content, &Content{
 		Type:    "text/html",
-		Content: html,
+		Body:    html,
 	})
 }
 
 func (e *Email) SetPlainBody(text string) {
 	e.Content = append(e.Content, &Content{
 		Type:    "text/plain",
-		Content: text,
+		Body:    text,
 	})
 }
 

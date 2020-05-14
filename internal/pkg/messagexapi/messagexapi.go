@@ -7,10 +7,10 @@ import (
 	"io/ioutil"
 	"net/http"
 
-	"vines.smsglobal.local/messagex/v2/sdk/go-messagex/internal/interface/apiclient"
-	"vines.smsglobal.local/messagex/v2/sdk/go-messagex/internal/types/api"
-	"vines.smsglobal.local/messagex/v2/sdk/go-messagex/internal/types/constants"
-	"vines.smsglobal.local/messagex/v2/sdk/go-messagex/pkg/logger"
+	"github.com/messagex/go-messagex/internal/interface/apiclient"
+	"github.com/messagex/go-messagex/internal/types/api"
+	"github.com/messagex/go-messagex/internal/types/constants"
+	"github.com/messagex/go-messagex/pkg/logger"
 )
 
 type MessageXAPI struct {
@@ -23,7 +23,7 @@ type MessageXAPI struct {
 }
 
 // CreateMessageXAPI - create message x api layer instance*/
-func CreateMessageXAPI(l *logger.Logger, apiHost string) (*MessageXAPI, error) {
+func CreateMessageXAPI(l *logger.Logger, apiHost string) *MessageXAPI {
 	log := l.Lgr.With().Str("MessageX API Layer", "CreateMessageXAPI").Logger()
 
 	log.Info().Msg("Creating MessageX API Instance")
@@ -32,7 +32,7 @@ func CreateMessageXAPI(l *logger.Logger, apiHost string) (*MessageXAPI, error) {
 		l:       l,
 		APIHost: apiHost,
 		Client:  &http.Client{},
-	}, nil
+	}
 }
 
 // Login handles a login command with username and password.
@@ -44,10 +44,7 @@ func (ma *MessageXAPI) Authenticate(username, password string) error {
 		APISecret: password,
 	}
 
-	arj, err := json.Marshal(ar)
-	if err != nil {
-		return err
-	}
+	arj, _ := json.Marshal(ar)
 
 	apiUrl := fmt.Sprintf("%s/api/%s", ma.APIHost, constants.EndpointAuthorise)
 
@@ -64,7 +61,7 @@ func (ma *MessageXAPI) Authenticate(username, password string) error {
 	// Send req using http Client
 	resp, err := ma.Client.Do(req)
 	if err != nil {
-		l.Error().Msgf("Error while making request to mail/send API: %s", err.Error())
+		l.Error().Msgf("Error while making request to %s API: %s", constants.EndpointMailSend, err.Error())
 		return err
 	}
 
@@ -74,6 +71,7 @@ func (ma *MessageXAPI) Authenticate(username, password string) error {
 	}
 
 	if resp.StatusCode != http.StatusCreated {
+		l.Error().Msgf("Unable to log user in error code %d, error %s", resp.StatusCode, string(respBody))
 		return fmt.Errorf("unable to log user in error code %d, error %s", resp.StatusCode, string(respBody))
 	}
 
@@ -93,11 +91,7 @@ func (ma *MessageXAPI) Authenticate(username, password string) error {
 func (ma *MessageXAPI) SendMail(mjr *api.Email) error {
 	l := ma.l.Lgr.With().Str("MessageX API Layer", "SendMail").Logger()
 
-	mjrJson, err := json.Marshal(mjr)
-	if err != nil {
-		l.Error().Msgf("Error marshaling mail job: %s", err.Error())
-		return err
-	}
+	mjrJson, _ := json.Marshal(mjr)
 
 	l.Debug().Msgf(string(mjrJson))
 
