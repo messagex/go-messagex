@@ -2,7 +2,7 @@ package api
 
 import (
 	"testing"
-	"vines.smsglobal.local/messagex/v2/sdk/go-messagex/internal/types/constants"
+	"github.com/messagex/go-messagex/internal/types/constants"
 
 	"github.com/stretchr/testify/assert"
 )

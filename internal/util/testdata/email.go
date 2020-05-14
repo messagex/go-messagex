@@ -1,7 +1,7 @@
 package testdata
 
 import (
-	"vines.smsglobal.local/messagex/v2/sdk/go-messagex/internal/types/api"
+	"github.com/messagex/go-messagex/internal/types/api"
 )
 
 func GetTestMJR() *api.Email {

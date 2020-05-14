@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 
-	"vines.smsglobal.local/messagex/v2/sdk/go-messagex"
+	"github.com/messagex/go-messagex"
 )
 
 var apiKey = "qsP8QCUF9q4Lmmv6dKDJukOIZ9vA1BVIRiy91RGjKaU42ovWtdYb2gwYaqhYY788"

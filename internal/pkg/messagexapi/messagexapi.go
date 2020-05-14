@@ -7,10 +7,10 @@ import (
 	"io/ioutil"
 	"net/http"
 
-	"vines.smsglobal.local/messagex/v2/sdk/go-messagex/internal/interface/apiclient"
-	"vines.smsglobal.local/messagex/v2/sdk/go-messagex/internal/types/api"
-	"vines.smsglobal.local/messagex/v2/sdk/go-messagex/internal/types/constants"
-	"vines.smsglobal.local/messagex/v2/sdk/go-messagex/pkg/logger"
+	"github.com/messagex/go-messagex/internal/interface/apiclient"
+	"github.com/messagex/go-messagex/internal/types/api"
+	"github.com/messagex/go-messagex/internal/types/constants"
+	"github.com/messagex/go-messagex/pkg/logger"
 )
 
 type MessageXAPI struct {

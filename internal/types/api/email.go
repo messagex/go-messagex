@@ -1,6 +1,6 @@
 package api
 
-import "vines.smsglobal.local/messagex/v2/sdk/go-messagex/internal/types/constants"
+import "github.com/messagex/go-messagex/internal/types/constants"
 
 // MailJob - this is the format in which the API layer passes the campaign mail job to the Core
 type Email struct {
