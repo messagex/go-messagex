@@ -5,9 +5,9 @@
 [![Sourcegraph](https://sourcegraph.com/github.com/messagex/go-messagex/-/badge.svg)](https://sourcegraph.com/github.com/messagex/go-messagex?badge)
 ![Go](https://github.com/messagex/go-messagex/workflows/Go/badge.svg?branch=master&event=status)
 
-![MessageX Logo](https://cloud-cdn.questionable.services/gorilla-icon-64.png)
+![MessageX Logo](https://github.com/messagex/go-messagex/messagex-logo-icon-dark-mode.svg)
 
-https://www.gorillatoolkit.org/pkg/mux
+https://www.smsglobal.com/
 
 MessageX SDK provides a library that provides an interface into the MessageX functionality.
 
