@@ -5,10 +5,10 @@ import (
 
 	"github.com/stretchr/testify/assert"
 
-	"github.com/messagex/go-messagex/internal/types/constants"
-	"github.com/messagex/go-messagex/internal/util/mocks"
-	"github.com/messagex/go-messagex/internal/util/testdata"
 	"github.com/messagex/go-messagex/pkg/logger"
+	"github.com/messagex/go-messagex/types/constants"
+	"github.com/messagex/go-messagex/util/mocks"
+	"github.com/messagex/go-messagex/util/testdata"
 )
 
 var l *logger.Logger

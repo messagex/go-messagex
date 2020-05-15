@@ -7,10 +7,10 @@ import (
 	"io/ioutil"
 	"net/http"
 
-	"github.com/messagex/go-messagex/internal/interface/apiclient"
-	"github.com/messagex/go-messagex/internal/types/api"
-	"github.com/messagex/go-messagex/internal/types/constants"
+	"github.com/messagex/go-messagex/interface/apiclient"
 	"github.com/messagex/go-messagex/pkg/logger"
+	"github.com/messagex/go-messagex/types/api"
+	"github.com/messagex/go-messagex/types/constants"
 )
 
 type MessageXAPI struct {
