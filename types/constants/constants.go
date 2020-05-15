@@ -12,7 +12,4 @@ const (
 	// Endpoints
 	EndpointAuthorise = "authorise"
 	EndpointMailSend = "mail/send"
-
-	// Other
-	AttachmentType = "attachment"
 )
