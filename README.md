@@ -1,8 +1,9 @@
 # MessageX SDK - Go
 ---
 [![GoDoc](https://godoc.org/github.com/messagex/go-messagex?status.svg)](https://godoc.org/github.com/messagex/go-messagex)
-[![CircleCI](https://circleci.com/gh/gorilla/mux.svg?style=svg)](https://circleci.com/gh/gorilla/mux)
+![Go](https://github.com/messagex/go-messagex/workflows/Go/badge.svg?branch=master)
 [![Sourcegraph](https://sourcegraph.com/github.com/messagex/go-messagex/-/badge.svg)](https://sourcegraph.com/github.com/messagex/go-messagex?badge)
+![Go](https://github.com/messagex/go-messagex/workflows/Go/badge.svg?branch=master&event=status)
 
 ![MessageX Logo](https://cloud-cdn.questionable.services/gorilla-icon-64.png)
 
