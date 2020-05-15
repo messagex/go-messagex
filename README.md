@@ -1,4 +1,12 @@
 # MessageX SDK - Go
+---
+[![GoDoc](https://godoc.org/github.com/messagex/go-messagex?status.svg)](https://godoc.org/github.com/messagex/go-messagex)
+[![CircleCI](https://circleci.com/gh/gorilla/mux.svg?style=svg)](https://circleci.com/gh/gorilla/mux)
+[![Sourcegraph](https://sourcegraph.com/github.com/messagex/go-messagex/-/badge.svg)](https://sourcegraph.com/github.com/messagex/go-messagex?badge)
+
+![MessageX Logo](https://cloud-cdn.questionable.services/gorilla-icon-64.png)
+
+https://www.gorillatoolkit.org/pkg/mux
 
 MessageX SDK provides a library that provides an interface into the MessageX functionality.
 
