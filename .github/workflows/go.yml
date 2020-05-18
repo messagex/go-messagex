@@ -28,3 +28,9 @@ jobs:
 
     - name: Test
       run: go test --coverprofile=coverage.out -count=1 -p 1 -cover ./...
+
+    - name: Run markdown lint
+        uses: actions/setup-node@master
+        run: |
+          npm install
+          node_modules/.bin/markdownlint ./ --ignore node_modules
