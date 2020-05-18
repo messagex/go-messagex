@@ -2,3 +2,4 @@
 coverage.out
 /docker-compose.yaml
 /bin
+/node_modules
